@@ -14,7 +14,7 @@ public struct PlayingCard: Card {
         case spade, diamond, club, heart
         
         /// A default order to use for suits
-        static var defaultOrder: [Suit] {
+        public static var defaultOrder: [Suit] {
             [.spade, .diamond, .club, .heart]
         }
     }
@@ -24,12 +24,12 @@ public struct PlayingCard: Card {
         case ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king
         
         /// A default order to use for ranks. Treats aces as low.
-        static var defaultOrder: [Rank] {
+        public static var defaultOrder: [Rank] {
             [.ace, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .jack, .queen, .king]
         }
         
         /// An ordering system where Aces are the highest value, but otherwise the default order is used.
-        static var acesHigh: [Rank] {
+        public static var acesHigh: [Rank] {
             var order = defaultOrder
             let ace = order.removeFirst()
             order.append(ace)
@@ -85,6 +85,14 @@ public struct PlayingCard: Card {
                 }
             }
         }
+    }
+    
+    public static var defaultAscendingOrder: ((PlayingCard, PlayingCard) -> Bool) {
+        return PlayingCard.order(rankOrder: Rank.defaultOrder, suitOrder: Suit.defaultOrder, ascending: true)
+    }
+    
+    public static var defaultDescendingOrder: ((PlayingCard, PlayingCard) -> Bool) {
+        return PlayingCard.order(rankOrder: Rank.defaultOrder, suitOrder: Suit.defaultOrder, ascending: false)
     }
 }
 
