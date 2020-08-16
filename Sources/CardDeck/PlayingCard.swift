@@ -64,7 +64,7 @@ public struct PlayingCard: Card {
     ///   - suitOrder: The order in which to sort the cards by suit
     ///   - ascending: True for ascending order, false for descending
     /// - Returns: A closure used to sort a deck of cards
-    static func order(rankOrder: [PlayingCard.Rank], suitOrder: [PlayingCard.Suit], ascending: Bool) -> ((PlayingCard, PlayingCard) -> Bool) {
+    public static func order(rankOrder: [PlayingCard.Rank], suitOrder: [PlayingCard.Suit], ascending: Bool) -> ((PlayingCard, PlayingCard) -> Bool) {
         return { (card1, card2) -> Bool in
             let rank1 = rankOrder.firstIndex(of: card1.rank) ?? 0
             let rank2 = rankOrder.firstIndex(of: card2.rank) ?? 0
