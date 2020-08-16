@@ -1,3 +1,3 @@
 import Foundation
 
-protocol Card: Hashable {}
+public protocol Card: Hashable {}

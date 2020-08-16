@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct PlayingCard: Card {
+public struct PlayingCard: Card {
     
     /// The suits available in a deck of playing cards
-    enum Suit: CaseIterable {
+    public enum Suit: CaseIterable {
         case spade, diamond, club, heart
         
         /// A default order to use for suits
@@ -20,7 +20,7 @@ struct PlayingCard: Card {
     }
     
     /// The ranks available in a deck of playing cards
-    enum Rank: CaseIterable {
+    public enum Rank: CaseIterable {
         case ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king
         
         /// A default order to use for ranks. Treats aces as low.
@@ -38,16 +38,16 @@ struct PlayingCard: Card {
     }
     
     /// The card's suit
-    var suit: Suit
+    public var suit: Suit
     
     /// The card's rank
-    var rank: Rank
+    public var rank: Rank
     
     /// An empty deck (i.e. a deck with no cards in it)
-    static var emptyDeck = Deck<PlayingCard>()
+    public static var emptyDeck = Deck<PlayingCard>()
     
     /// A full deck (i.e. a deck with all combinations of suits and ranks)
-    static var fullDeck: Deck<PlayingCard> {
+    public static var fullDeck: Deck<PlayingCard> {
         var cards = [PlayingCard]()
         for suit in PlayingCard.Suit.allCases {
             for rank in PlayingCard.Rank.allCases {
@@ -94,8 +94,8 @@ struct PlayingCard: Card {
 /// 1. Ace of Spades
 /// 2. A♠
 extension PlayingCard: ExpressibleByStringLiteral {
-    typealias StringLiteralType = String
-    init(stringLiteral: Self.StringLiteralType) {
+    public typealias StringLiteralType = String
+    public init(stringLiteral: Self.StringLiteralType) {
         guard let card = PlayingCard(string: stringLiteral) else {
             fatalError("Couldn't create Playing Card from string: \(stringLiteral)")
         }
@@ -134,7 +134,7 @@ extension PlayingCard: ExpressibleByStringLiteral {
 }
 
 extension PlayingCard: CustomDebugStringConvertible {
-    var debugDescription: String {
+    public var debugDescription: String {
         return self.rank.debugDescription + self.suit.debugDescription
     }
 }
@@ -155,7 +155,7 @@ extension PlayingCard.Suit: CustomDebugStringConvertible {
         }
     }
     
-    var debugDescription: String {
+    public var debugDescription: String {
         switch self {
         case .spade:
             return "♠"
@@ -203,7 +203,7 @@ extension PlayingCard.Rank: CustomDebugStringConvertible {
         }
     }
     
-    var debugDescription: String {
+    public var debugDescription: String {
         switch self {
         case .ace:
             return "A"

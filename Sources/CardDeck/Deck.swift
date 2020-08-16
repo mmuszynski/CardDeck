@@ -1,6 +1,6 @@
-struct Deck<Element: Card>: Equatable {
-    typealias Element = Element
-    private var cards: [Element] = []
+public struct Deck<Element: Card>: Equatable {
+    public typealias Element = Element
+    internal var cards: [Element] = []
     
     internal init(cards: [Element]) {
         self.cards = cards
@@ -9,7 +9,7 @@ struct Deck<Element: Card>: Equatable {
     /// Shuffles the `Cards` in the `Deck`.
     ///
     /// Simply shuffles the array that contains the `Card` objects.
-    mutating func shuffle() {
+    public mutating func shuffle() {
         self.cards.shuffle()
     }
     
@@ -18,7 +18,7 @@ struct Deck<Element: Card>: Equatable {
     /// - Parameters:
     ///   - count: The number of cards to deal into each deck
     ///   - decks: The decks that will receive the cards.
-    mutating func deal(_ count: Int, into decks: inout [Deck<Element>]) {
+    public mutating func deal(_ count: Int, into decks: inout [Deck<Element>]) {
         for _ in 0..<count {
             for i in 0..<decks.count {
                 if let card = self.cards.popLast() {
@@ -30,27 +30,27 @@ struct Deck<Element: Card>: Equatable {
 }
 
 extension Deck: ExpressibleByArrayLiteral {
-    init(arrayLiteral elements: Element...) {
+    public init(arrayLiteral elements: Element...) {
         self.init(cards: elements)
     }
     
-    typealias ArrayLiteralElement = Element
+    public typealias ArrayLiteralElement = Element
 }
 
 extension Deck: RangeReplaceableCollection, BidirectionalCollection, MutableCollection, RandomAccessCollection {
-    typealias Index = Array<Element>.Index
+    public typealias Index = Array<Element>.Index
     
-    init() {}
+    public init() {}
     
-    var startIndex: Deck.Index {
+    public var startIndex: Deck.Index {
         return cards.startIndex
     }
     
-    var endIndex: Deck.Index {
+    public var endIndex: Deck.Index {
         return cards.endIndex
     }
     
-    subscript(position: Index) -> Deck.Element {
+    public subscript(position: Index) -> Deck.Element {
         get {
             return cards[position]
         }
@@ -59,23 +59,23 @@ extension Deck: RangeReplaceableCollection, BidirectionalCollection, MutableColl
         }
     }
     
-    func index(before i: Deck.Index) -> Deck.Index {
+    public func index(before i: Deck.Index) -> Deck.Index {
         return cards.index(before: i)
     }
     
-    func index(after i: Deck.Index) -> Deck.Index {
+    public func index(after i: Deck.Index) -> Deck.Index {
         return cards.index(after: i)
     }
     
-    mutating func replaceSubrange<C>(_ subrange: Range<Array<Element>.Index>, with newElements: C) where C : Collection, Self.Element == C.Element {
+    mutating public func replaceSubrange<C>(_ subrange: Range<Array<Element>.Index>, with newElements: C) where C : Collection, Self.Element == C.Element {
         cards.replaceSubrange(subrange, with: newElements)
     }
     
-    @inlinable public func shuffled() -> Deck<Element> {
+    public func shuffled() -> Deck<Element> {
         return Deck<Element>(cards.shuffled())
     }
     
-    @inlinable public func sorted(by areInIncreasingOrder: (Element, Element) throws -> Bool) rethrows -> Deck<Element> {
+    public func sorted(by areInIncreasingOrder: (Element, Element) throws -> Bool) rethrows -> Deck<Element> {
         return Deck<Element>(try cards.sorted(by: areInIncreasingOrder))
     }
 }
