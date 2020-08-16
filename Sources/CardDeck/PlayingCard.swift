@@ -142,13 +142,13 @@ extension PlayingCard: CustomDebugStringConvertible {
 extension PlayingCard.Suit: CustomDebugStringConvertible {
     init?(string: String) {
         switch string.lowercased() {
-        case "♠", "spades", "spade":
+        case "♠", "spades", "spade", "s":
             self = .spade
-        case "♦", "diamonds", "diamond":
+        case "♦", "diamonds", "diamond", "d":
             self = .diamond
-        case "♣", "club", "clubs":
+        case "♣", "club", "clubs", "c":
             self = .club
-        case "♥", "hearts", "heart":
+        case "♥", "hearts", "heart", "h":
             self = .heart
         default:
             return nil
