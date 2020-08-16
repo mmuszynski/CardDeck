@@ -172,7 +172,7 @@ extension PlayingCard.Suit: CustomDebugStringConvertible {
 extension PlayingCard.Rank: CustomDebugStringConvertible {
     init?(string: String) {
         switch string.lowercased() {
-        case "ace", "1", "A":
+        case "ace", "1", "a":
             self = .ace
         case "two", "2":
             self = .two
