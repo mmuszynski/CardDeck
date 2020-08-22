@@ -27,6 +27,10 @@ public struct Deck<Element: Card>: Equatable {
             }
         }
     }
+    
+    public static var empty: Deck<Element> {
+        return Deck<Element>()
+    }
 }
 
 extension Deck: ExpressibleByArrayLiteral {
