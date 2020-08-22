@@ -1,3 +1,3 @@
 import Foundation
 
-public protocol Card: Hashable {}
+public protocol Card: Hashable, CustomStringConvertible, CustomDebugStringConvertible {}

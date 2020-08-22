@@ -141,6 +141,12 @@ extension PlayingCard: ExpressibleByStringLiteral {
     }
 }
 
+extension PlayingCard: CustomStringConvertible {
+    public var description: String {
+        return self.rank.debugDescription + self.suit.debugDescription
+    }
+}
+
 extension PlayingCard: CustomDebugStringConvertible {
     public var debugDescription: String {
         return self.rank.debugDescription + self.suit.debugDescription
