@@ -26,38 +26,38 @@ final class PlayingCardTests: XCTestCase {
     
     func testStringLiteral() {
         //♠, ♦, ♣, ♥
-        XCTAssertEqual(PlayingCard(suit: .club, rank: .ace), PlayingCard("Ace of Clubs"))
-        XCTAssertEqual(PlayingCard(suit: .spade, rank: .two), PlayingCard("Two♠"))
-        XCTAssertEqual(PlayingCard(suit: .spade, rank: .two), PlayingCard("2♠"))
-        XCTAssertEqual(PlayingCard(suit: .spade, rank: .two), PlayingCard("Two of ♠"))
-        XCTAssertEqual(PlayingCard(suit: .spade, rank: .two), PlayingCard("Two of Spades"))
+        XCTAssertEqual(PlayingCard(rank: .ace, suit: .club), PlayingCard("Ace of Clubs"))
+        XCTAssertEqual(PlayingCard(rank: .two, suit: .spade), PlayingCard("Two♠"))
+        XCTAssertEqual(PlayingCard(rank: .two, suit: .spade), PlayingCard("2♠"))
+        XCTAssertEqual(PlayingCard(rank: .two, suit: .spade), PlayingCard("Two of ♠"))
+        XCTAssertEqual(PlayingCard(rank: .two, suit: .spade), PlayingCard("Two of Spades"))
 
         //face cards
-        XCTAssertEqual(PlayingCard(suit: .diamond, rank: .jack), PlayingCard("Jack of Diamonds"))
-        XCTAssertEqual(PlayingCard(suit: .diamond, rank: .jack), PlayingCard("J of Diamonds"))
-        XCTAssertEqual(PlayingCard(suit: .diamond, rank: .jack), PlayingCard("J of ♦"))
-        XCTAssertEqual(PlayingCard(suit: .diamond, rank: .jack), PlayingCard("Jack of ♦"))
+        XCTAssertEqual(PlayingCard(rank: .jack, suit: .diamond), PlayingCard("Jack of Diamonds"))
+        XCTAssertEqual(PlayingCard(rank: .jack, suit: .diamond), PlayingCard("J of Diamonds"))
+        XCTAssertEqual(PlayingCard(rank: .jack, suit: .diamond), PlayingCard("J of ♦"))
+        XCTAssertEqual(PlayingCard(rank: .jack, suit: .diamond), PlayingCard("Jack of ♦"))
         
-        XCTAssertEqual(PlayingCard(suit: .heart, rank: .queen), PlayingCard("Queen of Hearts"))
-        XCTAssertEqual(PlayingCard(suit: .heart, rank: .queen), PlayingCard("Q of Hearts"))
-        XCTAssertEqual(PlayingCard(suit: .heart, rank: .queen), PlayingCard("Queen of ♥"))
-        XCTAssertEqual(PlayingCard(suit: .heart, rank: .queen), PlayingCard("Q of ♥"))
+        XCTAssertEqual(PlayingCard(rank: .queen, suit: .heart), PlayingCard("Queen of Hearts"))
+        XCTAssertEqual(PlayingCard(rank: .queen, suit: .heart), PlayingCard("Q of Hearts"))
+        XCTAssertEqual(PlayingCard(rank: .queen, suit: .heart), PlayingCard("Queen of ♥"))
+        XCTAssertEqual(PlayingCard(rank: .queen, suit: .heart), PlayingCard("Q of ♥"))
         
-        XCTAssertEqual(PlayingCard(suit: .club, rank: .king), PlayingCard("King of Clubs"))
-        XCTAssertEqual(PlayingCard(suit: .club, rank: .king), PlayingCard("K of Clubs"))
-        XCTAssertEqual(PlayingCard(suit: .club, rank: .king), PlayingCard("King of ♣"))
-        XCTAssertEqual(PlayingCard(suit: .club, rank: .king), PlayingCard("K of ♣"))
+        XCTAssertEqual(PlayingCard(rank: .king, suit: .club), PlayingCard("King of Clubs"))
+        XCTAssertEqual(PlayingCard(rank: .king, suit: .club), PlayingCard("K of Clubs"))
+        XCTAssertEqual(PlayingCard(rank: .king, suit: .club), PlayingCard("King of ♣"))
+        XCTAssertEqual(PlayingCard(rank: .king, suit: .club), PlayingCard("K of ♣"))
         
     }
     
     func testSort() {
         var hand = PlayingCard.emptyDeck
-        hand.append(PlayingCard(suit: .spade, rank: .ace))
-        hand.append(PlayingCard(suit: .spade, rank: .five))
-        hand.append(PlayingCard(suit: .spade, rank: .ten))
-        hand.append(PlayingCard(suit: .diamond, rank: .two))
-        hand.append(PlayingCard(suit: .diamond, rank: .jack))
-        hand.append(PlayingCard(suit: .heart, rank: .three))
+        hand.append(PlayingCard(rank: .ace, suit: .spade))
+        hand.append(PlayingCard(rank: .five, suit: .spade))
+        hand.append(PlayingCard(rank: .ten, suit: .spade))
+        hand.append(PlayingCard(rank: .two, suit: .diamond))
+        hand.append(PlayingCard(rank: .jack, suit: .diamond))
+        hand.append(PlayingCard(rank: .three, suit: .heart))
         
         let defaultOrder = PlayingCard.order(rankOrder: PlayingCard.Rank.defaultOrder, suitOrder: PlayingCard.Suit.defaultOrder, ascending: true)
         let sorted = hand.shuffled().sorted(by: defaultOrder)

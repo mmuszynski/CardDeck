@@ -37,6 +37,11 @@ public struct PlayingCard: Card {
         }
     }
     
+    public init(rank: Rank, suit: Suit) {
+        self.rank = rank
+        self.suit = suit
+    }
+    
     /// The card's suit
     public var suit: Suit
     
@@ -51,7 +56,7 @@ public struct PlayingCard: Card {
         var cards = [PlayingCard]()
         for suit in PlayingCard.Suit.allCases {
             for rank in PlayingCard.Rank.allCases {
-                cards.append(PlayingCard(suit: suit, rank: rank))
+                cards.append(PlayingCard(rank: rank, suit: suit))
             }
         }
         
@@ -137,7 +142,7 @@ extension PlayingCard: ExpressibleByStringLiteral {
             return nil
         }
         
-        self = PlayingCard(suit: suit, rank: rank)
+        self = PlayingCard(rank: rank, suit: suit)
     }
 }
 
